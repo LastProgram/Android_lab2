@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import java.util.Objects
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,5 +36,22 @@ class MainActivity : AppCompatActivity() {
     private fun isTextFloat(input: Editable) : Boolean
     {
         return input.toString().toFloatOrNull() != null
+    }
+
+    private fun calculate(x: Int, e: Float) : Double
+    {
+        var sum = 0.0
+        var term = 1.0
+        var sign = 1
+        var i = 1
+        while(Math.abs(term) > e)
+        {
+            sum += term
+            i++
+            sign = -sign
+            term = sign * 1.0 / (2*i - 1) / Math.pow(x.toDouble(), (2 * i - 1).toDouble())
+        }
+
+        return sum
     }
 }
