@@ -13,5 +13,7 @@ class MainActivity : AppCompatActivity() {
         val editValue = findViewById<EditText>(R.id.edit_value)
         val editConstrain = findViewById<EditText>(R.id.edit_constrain)
         val result = findViewById<TextView>(R.id.result)
+
+
     }
 }
