@@ -21,24 +21,34 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.button)
 
         button.setOnClickListener {
-            if(isTextFloat(editValue.text) && isTextFloat(editConstrain.text))
+            if(isTextDouble(editValue.text) && isTextDouble(editConstrain.text))
             {
-                result.text = "result"
+                result.text = calculate(textToInt(editValue.text), textToDouble(editConstrain.text)).toString()
             }
             else
             {
-                result.text = "Заполните все поля!"
+                result.text = "Не правильно введены данные!"
             }
         }
 
     }
 
-    private fun isTextFloat(input: Editable) : Boolean
+    private fun isTextDouble(input: Editable) : Boolean
     {
-        return input.toString().toFloatOrNull() != null
+        return input.toString().toDoubleOrNull() != null
     }
 
-    private fun calculate(x: Int, e: Float) : Double
+    private fun textToDouble(input:Editable) : Double
+    {
+        return input.toString().toDouble();
+    }
+
+    private fun textToInt(input:Editable) : Int
+    {
+        return input.toString().toInt();
+    }
+
+    private fun calculate(x: Int, e: Double) : Double
     {
         var sum = 0.0
         var term = 1.0
